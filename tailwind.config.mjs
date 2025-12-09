@@ -2,7 +2,19 @@
 export default {
     content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
     theme: {
-        extend: {},
+        extend: {
+            colors: {
+                'goldenPrimary': '#D4AF37',
+                'goldenSecondary': '#E7C468',
+                'bluePrimary': '#1E40AF',
+                'blueDark': '#1A304E',
+                'blueText': '#002251',
+                'textDark': '#4B4B4B',
+                'textLight': '#E8E8E8',
+                'whiteBg': '#F5F5F5',
+                'blackBg': '#1A1A1A'
+            },
+        },
     },
     plugins: [],
 }
