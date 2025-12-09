@@ -1,54 +1,17 @@
 ---
+import "../styles/global.css";
 import "@fontsource/poppins";
+import Head from "../components/Head.astro";
+import Header from "../components/Header.astro";
 
 const { title } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="description"
-      content="BM Acabados - Servicios profesionales en todo tipo de acabados"
-    />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
-  </head>
-  <body>
+  <Head title={title} />
+  <body class="max-w-7xl w-11/12 mx-auto">
+    <Header />
     <slot />
   </body>
 </html>
-
-<style is:global>
-  @tailwind base;
-  @tailwind components;
-  @tailwind utilities;
-
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-      transform: translateY(-20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .animate-fade-in {
-    animation: fade-in 1s ease-out;
-  }
-
-  html {
-    scroll-behavior: smooth;
-  }
-
-  body {
-    margin: 0;
-    padding: 0;
-    font-family: "Poppins";
-  }
-</style>
