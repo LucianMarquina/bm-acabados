@@ -1,0 +1,103 @@
+---
+import NavButton from "./NavButton.astro";
+import { House, Paintbrush, Crown, Phone, X, Menu } from "lucide-astro";
+---
+
+<div class="relative">
+  <button
+    id="menuButton"
+    class="relative z-40 text-xl cursor-pointer transition-opacity duration-300 ease-in-out opacity-100 data-[hidden=true]:opacity-0 data-[hidden=true]:pointer-events-none"
+    data-hidden="false"
+    aria-label="Abrir menú">
+    <Menu />
+  </button>
+
+  <aside
+    id="sidebar"
+    class="fixed top-0 right-0 z-50 h-full max-w-72 bg-white py-4 shadow-xl translate-x-full transition-transform duration-300 ease-in-out data-[open=true]:translate-x-0"
+    data-open="false"
+    aria-label="Menú de navegación"
+  >
+    <button
+      id="closeButton"
+      class="absolute top-5 right-3 p-1 transition-colors hover:rounded-full hover:bg-whiteBg"
+      aria-label="Cerrar menú"
+    >
+      <X class="size-7 text-gray-600 fill-gray-700" />
+    </button>
+
+    <div class="py-20 w-full">
+      <nav>
+        <NavButton name="Inicio" Icon={House} />
+        <NavButton name="Servicios" Icon={Paintbrush} />
+        <NavButton name="Nosotros" Icon={Crown} />
+        <NavButton name="Contactar" Icon={Phone} />
+      </nav>
+    </div>
+  </aside>
+
+  <div
+    id="overlay"
+    class="fixed inset-0 z-40 bg-black/50 opacity-0 pointer-events-none transition-opacity duration-300 ease-in-out data-[visible=true]:opacity-100 data-[visible=true]:pointer-events-auto"
+    data-visible="false"
+    aria-hidden="true"
+  >
+  </div>
+</div>
+
+<script>
+  class SidebarController {
+    private readonly menuButton: HTMLButtonElement;
+    private readonly closeButton: HTMLButtonElement;
+    private readonly sidebar: HTMLElement;
+    private readonly overlay: HTMLElement;
+
+    private readonly ESCAPE_KEY = "Escape";
+
+    constructor() {
+      this.menuButton = this.getElement<HTMLButtonElement>("menuButton");
+      this.closeButton = this.getElement<HTMLButtonElement>("closeButton");
+      this.sidebar = this.getElement<HTMLElement>("sidebar");
+      this.overlay = this.getElement<HTMLElement>("overlay");
+
+      this.attachEventListeners();
+    }
+
+    private getElement<T extends HTMLElement>(id: string): T {
+      const element = document.getElementById(id);
+      if (!element) throw new Error(`Element with id "${id}" not found`);
+      return element as T;
+    }
+
+    private attachEventListeners(): void {
+      this.menuButton.addEventListener("click", () => this.open());
+      this.closeButton.addEventListener("click", () => this.close());
+      this.overlay.addEventListener("click", () => this.close());
+      document.addEventListener("keydown", (e) => this.handleKeydown(e));
+    }
+
+    private handleKeydown(event: KeyboardEvent): void {
+      if (event.key === this.ESCAPE_KEY && this.isOpen()) {
+        this.close();
+      }
+    }
+
+    private isOpen(): boolean {
+      return this.sidebar.dataset.open === "true";
+    }
+
+    private open(): void {
+      this.sidebar.dataset.open = "true";
+      this.overlay.dataset.visible = "true";
+      this.menuButton.dataset.hidden = "true";
+    }
+
+    private close(): void {
+      this.sidebar.dataset.open = "false";
+      this.overlay.dataset.visible = "false";
+      this.menuButton.dataset.hidden = "false";
+    }
+  }
+
+  new SidebarController();
+</script>
