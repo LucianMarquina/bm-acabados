@@ -4,9 +4,9 @@ BM Acabados es una empresa que ofrece servicios en generales en todo tipo de aca
 
 ## Tecnologías
 
-**[Astro](https://img.shields.io/badge/Astro-BC52EE?logo=astro&logoColor=fff)** 
-**[TypeScript](https://shields.io/badge/TypeScript-3178C6?logo=TypeScript&logoColor=FFF&style=flat-square)**
-**[TailwindCSS](https://img.shields.io/badge/tailwindcss-0F172A?&logo=tailwindcss)** 
+![Astro](https://img.shields.io/badge/astro-%232C205F.svg?style=for-the-badge&logo=astro&logoColor=white)
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
 
 
 ## Estructura de carpetas del proyecto
