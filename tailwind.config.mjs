@@ -9,8 +9,8 @@ export default {
                 'bluePrimary': '#1E40AF',
                 'blueDark': '#1A304E',
                 'blueText': '#002251',
-                'textDark': '#4B4B4B',
-                'textLight': '#E8E8E8',
+                'darkText': '#4B4B4B',
+                'lightText': '#E8E8E8',
                 'whiteBg': '#F5F5F5',
                 'blackBg': '#1A1A1A'
             },
